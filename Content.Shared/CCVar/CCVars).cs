@@ -25,4 +25,10 @@ public sealed partial class CCVars : CVars
     /// </summary>
     public static readonly CVarDef<bool> DebugPow3rDisableParallel =
         CVarDef.Create("debug.pow3r_disable_parallel", true, CVar.SERVERONLY);
+
+        /// <summary>
+        /// How many characters the consent text can be. // Floofstation
+        /// </summary>
+        public static readonly CVarDef<int> ConsentFreetextMaxLength =
+            CVarDef.Create("consent.freetext_max_length", 1000, CVar.REPLICATED | CVar.SERVER);
 }

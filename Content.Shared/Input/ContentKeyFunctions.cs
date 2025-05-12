@@ -15,6 +15,8 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction FocusLocalChat = "FocusLocalChatWindow";
         public static readonly BoundKeyFunction FocusEmote = "FocusEmote";
         public static readonly BoundKeyFunction FocusWhisperChat = "FocusWhisperChatWindow";
+        public static readonly BoundKeyFunction FocusSubtle = "FocusSubtle"; // floof
+        public static readonly BoundKeyFunction FocusSubtleOOC = "FocusSubtleOOC"; // floof
         public static readonly BoundKeyFunction FocusRadio = "FocusRadioWindow";
         public static readonly BoundKeyFunction FocusLOOC = "FocusLOOCWindow";
         public static readonly BoundKeyFunction FocusOOC = "FocusOOCWindow";
@@ -80,6 +82,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction Arcade3 = "Arcade3";
 
         public static readonly BoundKeyFunction OpenActionsMenu = "OpenAbilitiesMenu";
+        public static readonly BoundKeyFunction OpenConsentWindow = "OpenConsentWindow"; // floof
         public static readonly BoundKeyFunction ShuttleStrafeLeft = "ShuttleStrafeLeft";
         public static readonly BoundKeyFunction ShuttleStrafeUp = "ShuttleStrafeUp";
         public static readonly BoundKeyFunction ShuttleStrafeRight = "ShuttleStrafeRight";

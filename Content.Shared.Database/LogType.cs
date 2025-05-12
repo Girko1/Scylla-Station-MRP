@@ -97,6 +97,7 @@ public enum LogType
     /// </summary>
     ChatRateLimited = 87,
     AtmosTemperatureChanged = 88,
+    Consent = 12489, // Floof - random high number to avoid conflict when upstream adds new log types
     DeviceNetwork = 89,
     StoreRefund = 90,
     /// <summary>

@@ -8,6 +8,7 @@ using Content.Server.Administration.Logs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.Consent; //floof
 using Content.Shared.Preferences;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,18 @@ using Prometheus;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Network;
+using Content.Shared.Administration.Logs; //floof
+using Content.Shared.Clothing.Loadouts.Systems; //floof
 using LogLevel = Robust.Shared.Log.LogLevel;
+using Content.Shared.Humanoid; //floof
+using Content.Shared.Humanoid.Markings; //floof
 using MSLogLevel = Microsoft.Extensions.Logging.LogLevel;
+using Robust.Shared.Enums; //floof
+using Robust.Shared.Utility; //floof
 using Content.Shared.Roles;
-using Robust.Shared.Prototypes;
+using Content.Shared.Clothing.Loadouts.Systems; //floof
+using Robust.Shared.Prototypes; //floof
+
 
 namespace Content.Server.Database
 {
@@ -248,6 +257,13 @@ namespace Content.Server.Database
         Task AddToWhitelistAsync(NetUserId player);
 
         Task RemoveFromWhitelistAsync(NetUserId player);
+
+        #endregion
+
+        #region Consent Settings
+
+        Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings);
+        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId); //floof
 
         #endregion
 
@@ -482,6 +498,17 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
+        }
+        public Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings) //floof
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings)); //floof
+        }
+
+        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
         }
 
         public Task<PlayerPreferences?> GetPlayerPreferencesAsync(NetUserId userId, CancellationToken cancel)
